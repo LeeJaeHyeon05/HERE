@@ -137,6 +137,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginSuccess() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onDestroy() {
