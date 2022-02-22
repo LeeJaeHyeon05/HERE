@@ -117,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
                         .setMessage("이메일이나 비밀번호를 다시 확인해주세요.")
                         .setPositiveButton("확인") { _, _ ->
                         }
-                        .show()
+                        .show()//
                 }
             }
     }
