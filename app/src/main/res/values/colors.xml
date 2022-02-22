@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#85D9F3</color>
+
+    <color name="loginEditTextColor">#4CD7D0</color>
+
+
 </resources>

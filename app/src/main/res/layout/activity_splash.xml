@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/splash_title"
+        android:text="@string/splashTitle"
         android:fontFamily="@font/black_han_sans"
         android:textColor="@color/black"
         android:textSize="70sp"
@@ -26,6 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/introImgDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
