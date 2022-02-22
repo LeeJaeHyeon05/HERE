@@ -58,6 +58,10 @@ class LoginActivity : AppCompatActivity() {
             loginUserId(email, password)
         }
 
+        binding.signUpButton.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
     }
 
     private fun signIn() {
