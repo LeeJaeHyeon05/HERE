@@ -11,4 +11,7 @@
     <string name="findIdPasswordText">아이디/비밀번호 찾기</string>
     <string name="googleLoginText">구글 로그인</string>
     <string name="faceBookLoginText">페이스북 로그인</string>
+    <string name="nameEditText">이름</string>
+    <string name="signUpPasswordCheckEditText">비밀번호 확인</string>
+    <string name="signUpMakeText">계정 만들기</string>
 </resources>

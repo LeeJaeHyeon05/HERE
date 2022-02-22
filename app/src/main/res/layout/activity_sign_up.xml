@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color"
-    tools:context=".LoginActivity">
-
+    tools:context=".SignUpActivity">
 
     <TextView
-        android:id="@+id/loginWelcomeText"
+        android:id="@+id/signUpWelcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -22,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/loginAppNameText"
+        android:id="@+id/signUpAppNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -32,16 +31,32 @@
         android:textSize="85sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginWelcomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/signUpWelcomeText" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailEditText"
+        android:id="@+id/nameEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:boxBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/loginAppNameText">
+        app:layout_constraintTop_toBottomOf="@+id/signUpAppNameText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nameEditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUpEmailEditText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/nameEditText">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -51,14 +66,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordEditText"
+        android:id="@+id/signUpPasswordEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:boxBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintTop_toBottomOf="@+id/signUpEmailEditText"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -68,73 +83,62 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/goLoginButton"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/loginEditTextColor"
-        android:text="@string/loginText"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:icon="@drawable/ic_baseline_arrow_right_alt_24"
-        app:iconGravity="textEnd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/signUpButton"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/loginEditTextColor"
-        android:text="@string/signUpText"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:icon="@drawable/ic_baseline_arrow_right_alt_24"
-        app:iconGravity="textEnd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goLoginButton" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/forgetText"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUpPasswordCheckEditText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/black_han_sans"
-        android:text="@string/findIdPasswordText"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/signUpPasswordEditText"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/signUpPasswordCheckEditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/googleLogin"
+        android:id="@+id/sinUpMakeButton"
         android:layout_width="340dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/loginEditTextColor"
+        android:text="@string/signUpMakeText"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_baseline_arrow_right_alt_24"
+        app:iconGravity="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpPasswordCheckEditText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUpGoogleLogin"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/loginbtn_background"
         android:text="@string/googleLoginText"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:backgroundTint="@color/black"
         app:icon="@drawable/google_icon"
         app:iconGravity="textStart"
         app:iconSize="26dp"
         app:iconTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgetText" />
+        app:layout_constraintTop_toBottomOf="@+id/sinUpMakeButton" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/faceBookLogin"
+        android:id="@+id/signUpFaceBookLogin"
         android:layout_width="340dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -143,12 +147,12 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:backgroundTint="@color/black"
         app:icon="@drawable/facebook_icon"
         app:iconGravity="textStart"
         app:iconSize="30dp"
         app:iconTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/googleLogin" />
-
+        app:layout_constraintTop_toBottomOf="@+id/signUpGoogleLogin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
