@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.goLoginButton.setOnClickListener {
             val email: String = binding.emailEditText.editText?.text.toString()
-            val password: String = binding.passwordEditText.editText?.text.toString()
+
             if (!emailSpelling(email))
                 return@setOnClickListener
 
