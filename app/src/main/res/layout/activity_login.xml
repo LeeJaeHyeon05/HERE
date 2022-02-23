@@ -102,18 +102,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goLoginButton" />
 
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/forgetText"
+        android:id="@+id/forgetEmailText"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/black_han_sans"
-        android:text="@string/findIdPasswordText"
+        android:text="@string/findEmailText"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/forgetPasswordText"
+        app:layout_constraintStart_toStartOf="@+id/signUpButton"
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/forgetPasswordText"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/black_han_sans"
+        android:text="@string/findPasswordText"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/signUpButton"
+        app:layout_constraintStart_toEndOf="@id/forgetEmailText"
         app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
 
     <com.google.android.material.button.MaterialButton
@@ -133,7 +147,7 @@
         app:iconTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgetText" />
+        app:layout_constraintTop_toBottomOf="@+id/forgetEmailText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/faceBookLogin"
