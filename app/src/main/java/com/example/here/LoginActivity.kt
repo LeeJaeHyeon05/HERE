@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.goLoginButton.setOnClickListener {
             val email: String = binding.emailEditText.editText?.text.toString()
-            val password = binding.passwordEditText.toString()
+            val password: String = binding.passwordEditText.editText?.text.toString()
             if (!emailSpelling(email))
                 return@setOnClickListener
 
@@ -61,6 +61,14 @@ class LoginActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
+
+        binding.forgetEmailText.setOnClickListener {
+            startActivity(Intent(this, FindEmailActivity::class.java))
+        }
+        binding.forgetPasswordText.setOnClickListener {
+            startActivity(Intent(this, FindPasswordActivity::class.java))
+        }
+
 
     }
 
