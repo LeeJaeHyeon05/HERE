@@ -21,4 +21,6 @@
     <string name="todayFestivalText">오늘의 축제</string>
     <string name="koreaCountryImage">korea country image</string>
     <string name="explainText">지역을 눌러\n원하는 장소를 찾아보세요</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
