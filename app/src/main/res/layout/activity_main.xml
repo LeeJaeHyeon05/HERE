@@ -7,253 +7,31 @@
     tools:context=".MainActivity">
 
 
-    <View
-        android:id="@+id/separateView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/separate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/mainNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/black_han_sans"
-        android:text="@string/splashTitle"
-        android:textColor="@color/black"
-        android:textSize="45sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/checkLoginButton"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#41B8DE"
-        android:fontFamily="@font/black_han_sans"
-        android:layout_marginBottom="8dp"
-        android:text="@string/loginText"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/separateView"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLay"
+        <FrameLayout
+            android:id="@+id/fragments_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            app:menu="@menu/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF"/>
 
-            <TextView
-                android:id="@+id/nowLocationTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/black_han_sans"
-                android:text="@string/nowLocationText"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/constraintLay"
-                app:layout_constraintTop_toTopOf="parent"/>
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/locationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/black_han_sans"
-                android:text="@string/nowLocationText"
-                android:textColor="@color/gray"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/nowLocationTitle"
-                app:layout_constraintTop_toBottomOf="@+id/nowLocationTitle" />
-
-            <TextView
-                android:id="@+id/explainText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/explainText"
-                android:fontFamily="@font/black_han_sans"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/koreaCountry"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textAlignment="textEnd"
-                android:layout_marginEnd="10dp"
-                android:textSize="21sp"/>
-
-
-            <ImageView
-                android:id="@+id/koreaCountry"
-                android:layout_width="415dp"
-                android:layout_height="450dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/korea_image"
-                app:layout_constraintStart_toStartOf="@+id/nowLocationTitle"
-                app:layout_constraintTop_toBottomOf="@+id/nowLocationTitle"
-                android:contentDescription="@string/koreaCountryImage" />
-
-
-            <TextView
-                android:id="@+id/geongGIDoTextButton"
-                android:layout_width="87dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="90dp"
-                app:layout_constraintEnd_toEndOf="@+id/koreaCountry"
-                app:layout_constraintStart_toStartOf="@+id/koreaCountry"
-                app:layout_constraintTop_toTopOf="@+id/koreaCountry" />
-
-            <TextView
-                android:id="@+id/gangWonDoTextButton"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="90dp"
-                app:layout_constraintEnd_toEndOf="@+id/koreaCountry"
-                app:layout_constraintStart_toEndOf="@+id/geongGIDoTextButton"
-                app:layout_constraintTop_toTopOf="@+id/koreaCountry" />
-
-            <TextView
-                android:id="@+id/chungcheongdoTextButton"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                app:layout_constraintStart_toStartOf="@+id/geongGIDoTextButton"
-                app:layout_constraintTop_toBottomOf="@+id/geongGIDoTextButton" />
-
-            <TextView
-                android:id="@+id/geongSangBuckDoTextButton"
-                android:layout_width="120dp"
-                android:layout_height="140dp"
-                app:layout_constraintStart_toEndOf="@+id/chungcheongdoTextButton"
-                app:layout_constraintTop_toBottomOf="@+id/gangWonDoTextButton" />
-
-            <TextView
-                android:id="@+id/jonLaBuckDoTextButton"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                app:layout_constraintStart_toStartOf="@+id/chungcheongdoTextButton"
-                app:layout_constraintTop_toBottomOf="@+id/chungcheongdoTextButton" />
-
-            <TextView
-                android:id="@+id/jonLaNamDoTextButton"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
-                app:layout_constraintEnd_toEndOf="@id/jonLaBuckDoTextButton"
-                app:layout_constraintTop_toBottomOf="@id/jonLaBuckDoTextButton" />
-
-            <TextView
-                android:id="@+id/geongSangNamDoTextButton"
-                android:layout_width="140dp"
-                android:layout_height="80dp"
-                app:layout_constraintEnd_toEndOf="@+id/geongSangBuckDoTextButton"
-                app:layout_constraintTop_toBottomOf="@+id/geongSangBuckDoTextButton" />
-
-            <TextView
-                android:id="@+id/jeJuDoTextButton"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="30dp"
-                app:layout_constraintStart_toStartOf="@+id/jonLaNamDoTextButton"
-                app:layout_constraintTop_toBottomOf="@+id/jonLaNamDoTextButton" />
-
-
-            <TextView
-                android:id="@+id/todayFestival"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/black_han_sans"
-                android:text="@string/todayFestivalText"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@+id/koreaCountry"
-                app:layout_constraintTop_toBottomOf="@+id/koreaCountry" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/festivalViewMoreButton"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                app:icon="@drawable/ic_baseline_add_24"
-                app:iconTint="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/black_han_sans"
-                android:text="@string/viewMoreText"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/todayFestival"
-                app:layout_constraintTop_toTopOf="@+id/todayFestival"
-                app:layout_constraintStart_toEndOf="@+id/todayFestival"
-                app:layout_constraintEnd_toEndOf="@+id/festivalRecyclerview"
-                android:layout_marginStart="200dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/festivalRecyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:orientation="horizontal"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintStart_toStartOf="@+id/todayFestival"
-                app:layout_constraintTop_toBottomOf="@+id/todayFestival" />
-
-
-            <TextView
-                android:id="@+id/wishList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/black_han_sans"
-                android:text="@string/wishListText"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintStart_toStartOf="@+id/todayFestival"
-                app:layout_constraintTop_toBottomOf="@+id/festivalRecyclerview" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/viewMoreButton"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                app:icon="@drawable/ic_baseline_add_24"
-                app:iconTint="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/black_han_sans"
-                android:text="@string/viewMoreText"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/wishList"
-                app:layout_constraintTop_toTopOf="@+id/wishList"
-                app:layout_constraintStart_toEndOf="@+id/wishList"
-                app:layout_constraintEnd_toEndOf="@+id/wishListRecyclerView"
-                android:layout_marginStart="200dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/wishListRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintStart_toStartOf="@+id/wishList"
-                app:layout_constraintTop_toBottomOf="@+id/wishList" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

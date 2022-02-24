@@ -8,9 +8,19 @@ import android.widget.GridLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.here.databinding.ActivityLoginBinding
 import com.example.here.databinding.ActivityMainBinding
+import com.example.here.main.FavoriteFragment
+import com.example.here.main.HomeFragment
+import com.example.here.main.LocationFragment
+import com.example.here.main.PlanFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var homeFragment: HomeFragment
+    private lateinit var locationFragment: LocationFragment
+    private lateinit var planFragment: PlanFragment
+    private lateinit var favoriteFragment: FavoriteFragment
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var mBinding: ActivityMainBinding? = null
@@ -21,81 +31,28 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val btnNav = binding.bottomNav
+        btnNav.setOnNavigationItemSelectedListener (onBottomNavItemSelectedListener)
 
-        //로그인 버튼
-        binding.checkLoginButton.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
+        homeFragment = HomeFragment.newInstance()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_frame, homeFragment).commit()
 
-        //경기도 버튼
-        binding.geongGIDoTextButton.setOnClickListener {
-            Log.d("msg", "강원도 성공")
-        }
-        //강원도 버튼
-        binding.gangWonDoTextButton.setOnClickListener {
-            Log.d("msg", "강원도 성공")
-        }
-        //충청도 버튼
-        binding.chungcheongdoTextButton.setOnClickListener {
-            Log.d("msg", "충청도 성공")
-        }
-        //전라북도 버튼
-        binding.jonLaBuckDoTextButton.setOnClickListener {
-            Log.d("msg", "전라북도 성공")
-        }
-        //전라남도 버튼
-        binding.jonLaNamDoTextButton.setOnClickListener {
-            Log.d("msg", "전라남도 성공")
-        }
-        //경상북도 버튼
-        binding.geongSangBuckDoTextButton.setOnClickListener {
-            Log.d("msg", "경상북도 성공")
-        }
-        //경상남도 버튼
-        binding.geongSangNamDoTextButton.setOnClickListener {
-            Log.d("msg", "경상남도 성공")
-        }
-        binding.jeJuDoTextButton.setOnClickListener {
-            Log.d("msg", "제주도 성공")
-        }
 
-        //리사이클러뷰 불러와서 매니저 적용
-        val festivalLayoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.HORIZONTAL }
-        binding.festivalRecyclerview.layoutManager = festivalLayoutManager
 
-        val data = ArrayList<ItemModel>()
-        binding.festivalRecyclerview.run {
-            adapter = MainFestivalAdapter(data)
-            layoutManager = festivalLayoutManager
+    }
+    private val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
+
+        when (it.itemId) {
+            R.id.menu_home -> {
+                homeFragment = HomeFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, homeFragment).commit()
+            }
+            R.id.menu_location -> {
+                locationFragment = LocationFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, locationFragment).commit()
+            }
         }
-
-        data.add(
-            ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        )
-        )
-        data.add(ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        ))
-        data.add(ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        ))
-        data.add(ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        ))
-        data.add(ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        ))
-        data.add(ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        ))
-
+        true
     }
 
     override fun onDestroy() {

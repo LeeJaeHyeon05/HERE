@@ -10,6 +10,12 @@ import com.example.here.R
 
 class FavoriteFragment : Fragment() {
 
+    companion object {
+        fun newInstance() : FavoriteFragment {
+            return FavoriteFragment()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

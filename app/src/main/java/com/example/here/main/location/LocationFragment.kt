@@ -10,6 +10,12 @@ import com.example.here.R
 
 class LocationFragment : Fragment() {
 
+    companion object {
+        fun newInstance() : LocationFragment {
+            return LocationFragment()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

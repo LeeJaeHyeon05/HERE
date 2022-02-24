@@ -10,6 +10,11 @@ import com.example.here.R
 
 class PlanFragment : Fragment() {
 
+    companion object {
+        fun newInstance() : LocationFragment {
+            return LocationFragment()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,22 +1,127 @@
 package com.example.here.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.here.ItemModel
+import com.example.here.LoginActivity
+import com.example.here.MainFestivalAdapter
 import com.example.here.R
+import com.example.here.databinding.ActivityMainBinding
+import com.example.here.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
 
+    companion object {
+        fun newInstance() : HomeFragment {
+            return HomeFragment()
+        }
+    }
+    private var mBinding: FragmentHomeBinding? = null
+    private val binding get() = mBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        mBinding = FragmentHomeBinding.inflate(inflater, container, false)
+
+
+        //로그인 버튼
+        binding.checkLoginButton.setOnClickListener {
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+        }
+
+        //경기도 버튼
+        binding.geongGIDoTextButton.setOnClickListener {
+            Log.d("msg", "강원도 성공")
+        }
+        //강원도 버튼
+        binding.gangWonDoTextButton.setOnClickListener {
+            Log.d("msg", "강원도 성공")
+        }
+        //충청도 버튼
+        binding.chungcheongdoTextButton.setOnClickListener {
+            Log.d("msg", "충청도 성공")
+        }
+        //전라북도 버튼
+        binding.jonLaBuckDoTextButton.setOnClickListener {
+            Log.d("msg", "전라북도 성공")
+        }
+        //전라남도 버튼
+        binding.jonLaNamDoTextButton.setOnClickListener {
+            Log.d("msg", "전라남도 성공")
+        }
+        //경상북도 버튼
+        binding.geongSangBuckDoTextButton.setOnClickListener {
+            Log.d("msg", "경상북도 성공")
+        }
+        //경상남도 버튼
+        binding.geongSangNamDoTextButton.setOnClickListener {
+            Log.d("msg", "경상남도 성공")
+        }
+        binding.jeJuDoTextButton.setOnClickListener {
+            Log.d("msg", "제주도 성공")
+        }
+
+        //리사이클러뷰 불러와서 매니저 적용
+        val festivalLayoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
+        binding.festivalRecyclerview.layoutManager = festivalLayoutManager
+
+        val data = ArrayList<ItemModel>()
+        binding.festivalRecyclerview.run {
+            adapter = MainFestivalAdapter(data)
+            layoutManager = festivalLayoutManager
+        }
+
+        data.add(
+            ItemModel(
+                R.drawable.facebook_icon,
+                R.string.appNameText
+            )
+        )
+        data.add(
+            ItemModel(
+            R.drawable.facebook_icon,
+            R.string.appNameText
+        )
+        )
+        data.add(
+            ItemModel(
+            R.drawable.facebook_icon,
+            R.string.appNameText
+        )
+        )
+        data.add(
+            ItemModel(
+            R.drawable.facebook_icon,
+            R.string.appNameText
+        )
+        )
+        data.add(
+            ItemModel(
+            R.drawable.facebook_icon,
+            R.string.appNameText
+        )
+        )
+        data.add(
+            ItemModel(
+            R.drawable.facebook_icon,
+            R.string.appNameText
+        )
+        )
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mBinding = null
     }
 
 }
