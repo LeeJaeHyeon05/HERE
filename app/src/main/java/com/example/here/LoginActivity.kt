@@ -1,21 +1,31 @@
 package com.example.here
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.here.databinding.ActivityLoginBinding
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -23,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
     var auth: FirebaseAuth? = null
     private val GOOGLE_REQUEST_CODE = 99
     private lateinit var googleSignInClient: GoogleSignInClient
+    private var callbackManager: CallbackManager? = null
 
 
     private var mBinding: ActivityLoginBinding? = null
@@ -46,6 +57,31 @@ class LoginActivity : AppCompatActivity() {
         //구글 로그인 버튼 클릭 리스너
         binding.googleLogin.setOnClickListener {
             signIn()
+        }
+
+        //페이스북
+        callbackManager = CallbackManager.Factory.create()
+        binding.faceBookLogin.setOnClickListener {
+            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile","email"))
+            LoginManager.getInstance().registerCallback(callbackManager, object:FacebookCallback<LoginResult>{
+                override fun onSuccess(result: LoginResult?) {
+                    if(result?.accessToken != null){
+                        //facebook 계정 정보를 firebase 서버에게 전달(로그인)
+                        firebaseAuthWithFacebook(result.accessToken)
+                    }else{
+                        Log.d("TAG", "facebook:성공이지만 null 값")
+                    }
+                }
+
+                override fun onCancel() {
+                    Log.d("TAG", "facebook:onCancel")
+                }
+
+                override fun onError(error: FacebookException?) {
+                    Log.d("TAG", "facebook:onError", error)
+                }
+
+            })
         }
 
         binding.goLoginButton.setOnClickListener {
@@ -72,8 +108,20 @@ class LoginActivity : AppCompatActivity() {
         binding.forgetPasswordText.setOnClickListener {
             startActivity(Intent(this, FindPasswordActivity::class.java))
         }
+    }
 
-
+    private fun firebaseAuthWithFacebook(accessToken: AccessToken?){
+        //AccessToken 으로 Facebook 인증
+        val credential = FacebookAuthProvider.getCredential(accessToken?.token!!)
+        //성공 시 Firebase 에 유저 정보 보내기(로그인)
+        auth?.signInWithCredential(credential)
+            ?.addOnCompleteListener {task->
+                if(task.isSuccessful){
+                    startActivity(Intent(this, MainActivity::class.java))
+                }else{
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                }
+            }
     }
 
     private fun signIn() {
@@ -82,8 +130,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == GOOGLE_REQUEST_CODE) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
