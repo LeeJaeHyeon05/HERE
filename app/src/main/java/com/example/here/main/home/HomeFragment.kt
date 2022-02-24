@@ -14,6 +14,8 @@ import com.example.here.MainFestivalAdapter
 import com.example.here.R
 import com.example.here.databinding.ActivityMainBinding
 import com.example.here.databinding.FragmentHomeBinding
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.firebase.auth.FirebaseAuth
 
 
 class HomeFragment : Fragment() {
@@ -26,16 +28,31 @@ class HomeFragment : Fragment() {
     private var mBinding: FragmentHomeBinding? = null
     private val binding get() = mBinding!!
 
+    var auth : FirebaseAuth?= null
+    var googleSignInClient : GoogleSignInClient?= null
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         mBinding = FragmentHomeBinding.inflate(inflater, container, false)
+        auth = FirebaseAuth.getInstance()
+
+
 
 
         //로그인 버튼
         binding.checkLoginButton.setOnClickListener {
             startActivity(Intent(requireContext(), LoginActivity::class.java))
+        }
+        //로그아웃 버튼
+        binding.logOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            googleSignInClient?.signOut()
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+
         }
 
         //경기도 버튼
