@@ -58,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
         binding.googleLogin.setOnClickListener {
             signIn()
         }
-
         //페이스북
         callbackManager = CallbackManager.Factory.create()
         binding.faceBookLogin.setOnClickListener {

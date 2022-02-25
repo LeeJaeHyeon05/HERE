@@ -51,6 +51,14 @@ class MainActivity : AppCompatActivity() {
                 locationFragment = LocationFragment.newInstance()
                 supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, locationFragment).commit()
             }
+            R.id.menu_plan -> {
+                planFragment = PlanFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, planFragment).commit()
+            }
+            R.id.menu_favorite -> {
+                favoriteFragment = FavoriteFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, favoriteFragment).commit()
+            }
         }
         true
     }

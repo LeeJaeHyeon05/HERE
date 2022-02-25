@@ -52,14 +52,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/separateView"/>
 
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:overScrollMode="never">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -206,10 +207,8 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/todayFestival"
-                app:layout_constraintTop_toTopOf="@+id/todayFestival"
-                app:layout_constraintStart_toEndOf="@+id/todayFestival"
-                app:layout_constraintEnd_toEndOf="@+id/festivalRecyclerview"
-                android:layout_marginStart="200dp"/>
+                app:layout_constraintEnd_toEndOf="@+id/wishListRecyclerView"
+                app:layout_constraintTop_toTopOf="@+id/todayFestival"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/festivalRecyclerview"
@@ -247,10 +246,10 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/wishList"
-                app:layout_constraintTop_toTopOf="@+id/wishList"
-                app:layout_constraintStart_toEndOf="@+id/wishList"
                 app:layout_constraintEnd_toEndOf="@+id/wishListRecyclerView"
-                android:layout_marginStart="200dp"/>
+                app:layout_constraintTop_toTopOf="@+id/wishList"
+                />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/wishListRecyclerView"
@@ -264,6 +263,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
