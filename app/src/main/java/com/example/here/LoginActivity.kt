@@ -1,13 +1,10 @@
 package com.example.here
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.here.databinding.ActivityLoginBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -15,6 +12,7 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+//import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -58,30 +56,9 @@ class LoginActivity : AppCompatActivity() {
             signIn()
         }
 
-        //페이스북
+//        페이스북
         callbackManager = CallbackManager.Factory.create()
-        binding.faceBookLogin.setOnClickListener {
-            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile","email"))
-            LoginManager.getInstance().registerCallback(callbackManager, object:FacebookCallback<LoginResult>{
-                override fun onSuccess(result: LoginResult?) {
-                    if(result?.accessToken != null){
-                        //facebook 계정 정보를 firebase 서버에게 전달(로그인)
-                        firebaseAuthWithFacebook(result.accessToken)
-                    }else{
-                        Log.d("TAG", "facebook:성공이지만 null 값")
-                    }
-                }
-
-                override fun onCancel() {
-                    Log.d("TAG", "facebook:onCancel")
-                }
-
-                override fun onError(error: FacebookException?) {
-                    Log.d("TAG", "facebook:onError", error)
-                }
-
-            })
-        }
+        initFacebookLoginButton()
 
         binding.goLoginButton.setOnClickListener {
             val email: String = binding.emailEditText.editText?.text.toString()
@@ -107,18 +84,30 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun firebaseAuthWithFacebook(accessToken: AccessToken?){
-        //AccessToken 으로 Facebook 인증
-        val credential = FacebookAuthProvider.getCredential(accessToken?.token!!)
-        //성공 시 Firebase 에 유저 정보 보내기(로그인)
-        auth?.signInWithCredential(credential)
-            ?.addOnCompleteListener {task->
-                if(task.isSuccessful){
-                    startActivity(Intent(this, MainActivity::class.java))
-                }else{
-                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-                }
+    private fun initFacebookLoginButton() {
+        binding.faceBookLogin.setOnClickListener {
+            facebookLogin()
+        }
+    }
+
+    private fun facebookLogin() {
+        LoginManager.getInstance()
+            .logInWithReadPermissions(this, listOf("email", "public_profile"))
+        LoginManager.getInstance().registerCallback(callbackManager, object :
+            FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult) {
+                firebaseAuthWithFacebook(result.accessToken)
             }
+
+            override fun onCancel() {
+                Log.d("TAG", "facebook:onCancel")
+            }
+
+            override fun onError(error: FacebookException) {
+                Log.d("TAG", "facebook:onError", error)
+            }
+
+        })
     }
 
     private fun signIn() {
@@ -127,12 +116,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+        callbackManager?.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == GOOGLE_REQUEST_CODE) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
@@ -188,6 +177,20 @@ class LoginActivity : AppCompatActivity() {
                     loginSuccess()
                 } else {
                     finish()
+                }
+            }
+    }
+
+    private fun firebaseAuthWithFacebook(accessToken: AccessToken?) {
+        //AccessToken 으로 Facebook 인증
+        val credential = FacebookAuthProvider.getCredential(accessToken?.token!!)
+        //성공 시 Firebase 에 유저 정보 보내기(로그인)
+        auth?.signInWithCredential(credential)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    loginSuccess()
+                } else {
+                    Toast.makeText(this, "로그인 실패!", Toast.LENGTH_LONG).show()
                 }
             }
     }
