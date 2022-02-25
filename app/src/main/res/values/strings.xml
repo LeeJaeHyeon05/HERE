@@ -16,7 +16,7 @@
     <string name="signUpPasswordCheckEditText">비밀번호 확인</string>
     <string name="signUpMakeText">계정 만들기</string>
 
-    <string name="facebook_app_id">712204613281048</string>
-    <string name="fb_login_protocol_scheme">fb712204613281048</string>
+    <string name="facebook_app_id">276362047946468</string>
+    <string name="fb_login_protocol_scheme">fb276362047946468</string>
 
 </resources>
