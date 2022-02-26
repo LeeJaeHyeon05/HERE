@@ -11,5 +11,9 @@
 
     <color name="loginEditTextColor">#4CD7D0</color>
 
+    <color name="gray">#6B6B6B</color>
+
+    <color name="separate">#DC8F8F8F</color>
+
 
 </resources>

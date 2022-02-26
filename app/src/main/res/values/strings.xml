@@ -8,13 +8,25 @@
     <string name="passwordEditText">비밀번호</string>
     <string name="loginText">로그인</string>
     <string name="signUpText">회원 가입</string>
+
+    <string name="findIdPasswordText">비밀번호 찾기</string>
     <string name="findPasswordText">비밀번호 재설정</string>
     <string name="findEmailText">이메일 찾기</string>
+
     <string name="googleLoginText">구글 로그인</string>
     <string name="faceBookLoginText">페이스북 로그인</string>
     <string name="nameEditText">이름</string>
     <string name="signUpPasswordCheckEditText">비밀번호 확인</string>
     <string name="signUpMakeText">계정 만들기</string>
+    <string name="loginText2">로그인</string>
+    <string name="nowLocationText">현재 위치</string>
+    <string name="viewMoreText">더보기</string>
+    <string name="wishListText">위시리스트</string>
+    <string name="todayFestivalText">오늘의 축제</string>
+    <string name="koreaCountryImage">korea country image</string>
+    <string name="explainText">지역을 눌러\n원하는 장소를 찾아보세요</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="facebook_app_id">276362047946468</string>
     <string name="fb_login_protocol_scheme">fb276362047946468</string>
