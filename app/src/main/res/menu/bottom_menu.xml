@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_home"
+        android:title="홈"
+        android:icon="@drawable/ic_baseline_home_24"/>
+
+    <item
+        android:id="@+id/menu_location"
+        android:title="위치"
+        android:icon="@drawable/ic_baseline_location_on_24"/>
+
+    <item
+        android:id="@+id/menu_plan"
+        android:title="여행"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+
+    <item
+        android:id="@+id/menu_favorite"
+        android:title="관심"
+        android:icon="@drawable/ic_baseline_favorite_24"/>
+
+
+</menu>

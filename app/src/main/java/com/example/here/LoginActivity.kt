@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         // 구글 로그인
         auth = Firebase.auth
         val gso = GoogleSignInOptions
@@ -55,15 +56,17 @@ class LoginActivity : AppCompatActivity() {
         binding.googleLogin.setOnClickListener {
             signIn()
         }
+        //페이스북
+
 
 //        페이스북
+
         callbackManager = CallbackManager.Factory.create()
         initFacebookLoginButton()
 
         binding.goLoginButton.setOnClickListener {
             val email: String = binding.emailEditText.editText?.text.toString()
-            val password: String = binding.passwordEditText.editText?.text.toString()
-
+            val password : String = binding.passwordEditText.editText?.text.toString()
 
             if (!emailSpelling(email))
                 return@setOnClickListener
@@ -74,6 +77,9 @@ class LoginActivity : AppCompatActivity() {
 
         binding.signUpButton.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+        binding.goMainDev.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         binding.forgetEmailText.setOnClickListener {
