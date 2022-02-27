@@ -13,5 +13,15 @@
       </Target>
     </targetSelectedWithDropDown>
     <timeTargetWasSelectedWithDropDown value="2022-02-26T09:11:19.449562600Z" />
+            <value value="C:\Users\Anwooseong\.android\avd\Pixel_2_API_29.avd" />
+            <value value="C:\Users\CN\.android\avd\Pixel_2_API_30.avd" />
+            <value value="C:\Users\Admin\.android\avd\Kotlin.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+    </runningDeviceTargetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2022-02-24T12:34:08.165502Z" />
+    </targetSelectedWithDropDown>
+
   </component>
 </project>

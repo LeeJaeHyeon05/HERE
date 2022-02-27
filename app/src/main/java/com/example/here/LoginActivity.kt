@@ -59,6 +59,11 @@ class LoginActivity : AppCompatActivity() {
         //페이스북
 
 //        페이스북
+        //페이스북
+
+
+//        페이스북
+
         callbackManager = CallbackManager.Factory.create()
         initFacebookLoginButton()
 
