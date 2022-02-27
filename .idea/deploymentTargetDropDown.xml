@@ -7,9 +7,15 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\Admin\.android\avd\Kotlin.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+    </targetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2022-02-26T09:11:19.449562600Z" />
             <value value="C:\Users\Anwooseong\.android\avd\Pixel_2_API_29.avd" />
             <value value="C:\Users\CN\.android\avd\Pixel_2_API_30.avd" />
-            <value value="C:\Users\Admin\.android\avd\Kotlin.avd" />  
+            <value value="C:\Users\Admin\.android\avd\Kotlin.avd" />
           </Key>
         </deviceKey>
       </Target>
