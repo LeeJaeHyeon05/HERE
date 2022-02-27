@@ -36,103 +36,11 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mBinding = FragmentHomeBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
 
 
-
-
-        //로그인 버튼
-        binding.checkLoginButton.setOnClickListener {
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-        }
-        //로그아웃 버튼
-        binding.logOut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            googleSignInClient?.signOut()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-
-        }
-
-        //경기도 버튼
-        binding.geongGIDoTextButton.setOnClickListener {
-            Log.d("msg", "강원도 성공")
-        }
-        //강원도 버튼
-        binding.gangWonDoTextButton.setOnClickListener {
-            Log.d("msg", "강원도 성공")
-        }
-        //충청도 버튼
-        binding.chungcheongdoTextButton.setOnClickListener {
-            Log.d("msg", "충청도 성공")
-        }
-        //전라북도 버튼
-        binding.jonLaBuckDoTextButton.setOnClickListener {
-            Log.d("msg", "전라북도 성공")
-        }
-        //전라남도 버튼
-        binding.jonLaNamDoTextButton.setOnClickListener {
-            Log.d("msg", "전라남도 성공")
-        }
-        //경상북도 버튼
-        binding.geongSangBuckDoTextButton.setOnClickListener {
-            Log.d("msg", "경상북도 성공")
-        }
-        //경상남도 버튼
-        binding.geongSangNamDoTextButton.setOnClickListener {
-            Log.d("msg", "경상남도 성공")
-        }
-        binding.jeJuDoTextButton.setOnClickListener {
-            Log.d("msg", "제주도 성공")
-        }
-
-        //리사이클러뷰 불러와서 매니저 적용
-        val festivalLayoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
-        binding.festivalRecyclerview.layoutManager = festivalLayoutManager
-
-        val data = ArrayList<ItemModel>()
-        binding.festivalRecyclerview.run {
-            adapter = MainFestivalAdapter(data)
-            layoutManager = festivalLayoutManager
-        }
-
-        data.add(
-            ItemModel(
-                R.drawable.facebook_icon,
-                R.string.appNameText
-            )
-        )
-        data.add(
-            ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        )
-        )
-        data.add(
-            ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        )
-        )
-        data.add(
-            ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        )
-        )
-        data.add(
-            ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        )
-        )
-        data.add(
-            ItemModel(
-            R.drawable.facebook_icon,
-            R.string.appNameText
-        )
-        )
         return binding.root
     }
 
