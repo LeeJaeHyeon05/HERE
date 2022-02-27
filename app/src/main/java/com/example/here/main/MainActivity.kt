@@ -1,17 +1,11 @@
 package com.example.here
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.GridLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.here.databinding.ActivityLoginBinding
 import com.example.here.databinding.ActivityMainBinding
-import com.example.here.main.FavoriteFragment
 import com.example.here.main.HomeFragment
 import com.example.here.main.LocationFragment
-import com.example.here.main.PlanFragment
+import com.example.here.main.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,8 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var locationFragment: LocationFragment
-    private lateinit var planFragment: PlanFragment
-    private lateinit var favoriteFragment: FavoriteFragment
+    private lateinit var profileFragment: ProfileFragment
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var mBinding: ActivityMainBinding? = null
@@ -51,13 +44,9 @@ class MainActivity : AppCompatActivity() {
                 locationFragment = LocationFragment.newInstance()
                 supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, locationFragment).commit()
             }
-            R.id.menu_plan -> {
-                planFragment = PlanFragment.newInstance()
-                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, planFragment).commit()
-            }
-            R.id.menu_favorite -> {
-                favoriteFragment = FavoriteFragment.newInstance()
-                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, favoriteFragment).commit()
+            R.id.menu_profile -> {
+                profileFragment = ProfileFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, profileFragment).commit()
             }
         }
         true

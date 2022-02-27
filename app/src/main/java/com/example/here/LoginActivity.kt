@@ -73,20 +73,33 @@ class LoginActivity : AppCompatActivity() {
             loginUserId(email, password)
         }
 
-        binding.signUpButton.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
-        }
+        //개발용
         binding.goMainDev.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+        initSignUpButton()
+        initForgetEmailText()
+        initForgetPasswordText()
 
+    }
+
+    private fun initSignUpButton() {
+        binding.signUpButton.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
+    }
+    private fun initForgetEmailText() {
         binding.forgetEmailText.setOnClickListener {
             startActivity(Intent(this, FindEmailActivity::class.java))
         }
+    }
+    private fun initForgetPasswordText() {
         binding.forgetPasswordText.setOnClickListener {
             startActivity(Intent(this, FindPasswordActivity::class.java))
         }
     }
+
+
 
     private fun initFacebookLoginButton() {
         binding.faceBookLogin.setOnClickListener {

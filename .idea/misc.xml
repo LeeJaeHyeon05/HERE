@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Hear/HERE/app/src/main/res/layout/activity_sign_up.xml" value="0.3999094202898551" />
         <entry key="..\:/Hear/HERE/app/src/main/res/layout/activity_login.xml" value="0.3999094202898551" />
         <entry key="..\:/Hear/HERE/app/src/main/res/layout/activity_sign_up.xml" value="0.3999094202898551" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/HERE/app/src/main/res/layout/activity_find_email.xml" value="0.36614583333333334" />
@@ -17,6 +16,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/HERE/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/HERE/app/src/main/res/layout/fragment_location.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/HERE/app/src/main/res/layout/fragment_plan.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/HERE/app/src/main/res/layout/fragment_profile.xml" value="0.31875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/HERE/app/src/main/res/menu/bottom_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Anwooseong/Desktop/project/HERE/app/src/main/res/drawable/ic_baseline_arrow_right_alt_24.xml" value="0.1325" />
         <entry key="..\:/Users/Anwooseong/Desktop/project/HERE/app/src/main/res/drawable/loginbtn_background.xml" value="0.231" />
